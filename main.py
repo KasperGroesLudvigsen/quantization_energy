@@ -80,6 +80,8 @@ token_df = []
 
 for model in models:
 
+    print(f"Starting inference with model: {model}")
+
     sampling_params = SamplingParams(temperature=temperature, top_p=top_p, max_tokens=2048*2)
 
     if isinstance(model, dict):
