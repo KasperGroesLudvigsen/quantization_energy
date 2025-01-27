@@ -7,7 +7,7 @@ def main():
 
     hf_username = "ThatsGroes"
 
-    models = ["meta-llama/Llama-3.1-8B-Instruct", "meta-llama/Llama-3.2-3B-Instruct"]
+    models = ["meta-llama/Llama-3.2-3B-Instruct"]
 
     for model in models:
 
