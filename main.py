@@ -53,12 +53,11 @@ def make_prompt() -> dict:
 # samples per iteration
 SAMPLES = 10000
 
-models = ["meta-llama/Llama-3.1-8B-Instruct", 
-          "ThatsGroes/Llama-3.1-8B-Instruct-W8A8-Dynamic-Per-Token", 
-          {"model" : "meta-llama/Llama-3.1-8B-Instruct", "quantization": "bitsandbytes", "load_format" :"bitsandbytes"},
-          "meta-llama/Llama-3.2-3B-Instruct",
-          "ThatsGroes/Llama-3.2-3B-Instruct-W8A8-Dynamic-Per-Token",
-          "meta-llama/Llama-3.2-3B-Instruct-QLORA_INT4_EO8"]
+model_config = [{"model" : "meta-llama/Llama-3.1-8B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"},
+                "meta-llama/Llama-3.1-8B-Instruct",
+                "meta-llama/Llama-3.2-3B-Instruct",
+                {"model" : "meta-llama/Llama-3.2-3B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"}]
+
 
 iterations = 10
 
@@ -78,7 +77,7 @@ dataset = Dataset.from_list(prompts)
 
 token_df = []
 
-for model in models:
+for model in model_config:
 
     print(f"Starting inference with model: {model}")
 
@@ -86,10 +85,9 @@ for model in models:
 
     if isinstance(model, dict):
 
+        llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"])
         model = model["model"]
-
-        llm = LLM(model=model, max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"])
-
+        
     else:
         llm = LLM(model=model, max_seq_len_to_capture=8000)
 
