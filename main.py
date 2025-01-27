@@ -87,7 +87,7 @@ for model in model_config:
 
         llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"])
         model = model["model"]
-        
+
     else:
         llm = LLM(model=model, max_seq_len_to_capture=8000)
 
@@ -147,4 +147,5 @@ for model in model_config:
         "was used for inference."
     )
 
-token_df.to_csv
+token_df = pd.DataFrame(token_df)
+token_df.to_csv("total_tokens.csv", index=False)
