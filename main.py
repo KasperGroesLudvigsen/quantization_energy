@@ -90,6 +90,10 @@ for model in models:
 
         llm = LLM(model=model, max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"])
 
+    else:
+        llm = LLM(model=model, max_seq_len_to_capture=8000)
+
+
     tokenizer = AutoTokenizer.from_pretrained(model, token=token)
     
     token = os.getenv("HF_TOKEN") 
