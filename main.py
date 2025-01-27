@@ -93,10 +93,10 @@ for model in models:
     else:
         llm = LLM(model=model, max_seq_len_to_capture=8000)
 
+    token = os.getenv("HF_TOKEN") 
 
     tokenizer = AutoTokenizer.from_pretrained(model, token=token)
     
-    token = os.getenv("HF_TOKEN") 
 
     # Log some GPU stats before we start inference
     gpu_stats = torch.cuda.get_device_properties(0)
