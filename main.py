@@ -84,7 +84,9 @@ for model in models:
 
     if isinstance(model, dict):
 
-        llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"])
+        model = model["model"]
+
+        llm = LLM(model=model, max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"])
 
     tokenizer = AutoTokenizer.from_pretrained(model, token=token)
     
@@ -123,6 +125,7 @@ for model in models:
 
     # torch.cuda.empty_cache does not properly free up memory
     del llm 
+    del tokenizer
 
     print(f"\nEmissions from generating queries with {model}:\n {emissions}")
     energy_consumption_kwh = tracker._total_energy.kWh  # Total energy in kWh
