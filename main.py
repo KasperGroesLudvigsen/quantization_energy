@@ -59,8 +59,6 @@ model_config = [{"model" : "meta-llama/Llama-3.1-8B-Instruct" ,"quantization": "
                 {"model" : "meta-llama/Llama-3.2-3B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"}]
 
 
-iterations = 10
-
 top_p = 0.95
 
 temperature = 0.9
@@ -87,9 +85,11 @@ for model in model_config:
 
         llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"])
         model = model["model"]
+        project_name = model + "_quant"
 
     else:
         llm = LLM(model=model, max_seq_len_to_capture=8000)
+        project_name=model
 
     token = os.getenv("HF_TOKEN") 
 
@@ -105,7 +105,7 @@ for model in model_config:
         f"in total, of which {start_gpu_memory:.2f}GB has been reserved already."
     )
 
-    tracker = EmissionsTracker(project_name=model, measure_power_secs=1)
+    tracker = EmissionsTracker(project_name=project_name, measure_power_secs=1)
 
     print("Starting inference..")
 
