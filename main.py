@@ -74,7 +74,7 @@ prompts = [make_prompt() for i in range(SAMPLES)]
 dataset = Dataset.from_list(prompts)
 
 df = dataset.to_pandas()
-df.to_csv("data/dataset.csv", index=False)
+df.to_csv("dataset.csv", index=False)
 
 token_df = []
 
