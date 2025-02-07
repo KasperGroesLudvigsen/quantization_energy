@@ -48,7 +48,7 @@ if __name__ == "__main__":
         description='What the program does',
         epilog='Text at the bottom of help')
     
-    parser.add_argument('model_id')           # positional argument
+    parser.add_argument('model_id', type=str)           # positional argument
 
     args = parser.parse_args()
 
