@@ -12,6 +12,8 @@ import argparse
 
 def main(model, hf_username="ThatsGroes"):
 
+    print(f"Will quantize {model}")
+
     ###
     # Loading the Model
     ###
