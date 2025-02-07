@@ -53,11 +53,11 @@ def make_prompt() -> dict:
 # samples per iteration
 SAMPLES = 10000
 
-model_config = [{"model" : "meta-llama/Llama-3.1-8B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"},
-                "meta-llama/Llama-3.1-8B-Instruct",
-                "meta-llama/Llama-3.2-3B-Instruct",
-                {"model" : "meta-llama/Llama-3.2-3B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"}]
-
+#model_config = [{"model" : "meta-llama/Llama-3.1-8B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"},
+#                "meta-llama/Llama-3.1-8B-Instruct",
+#                "meta-llama/Llama-3.2-3B-Instruct",
+#                {"model" : "meta-llama/Llama-3.2-3B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"}]
+model_config = []
 
 top_p = 0.95
 

@@ -7,7 +7,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from datasets import load_dataset
 from llmcompressor.transformers import oneshot
 from llmcompressor.modifiers.quantization import QuantizationModifier
-
+import argparse
 
 
 def main(model, hf_username="ThatsGroes"):
@@ -18,7 +18,6 @@ def main(model, hf_username="ThatsGroes"):
 
     MODEL_ID = model
 
-    MODEL_ID = "meta-llama/Meta-Llama-3-8B-Instruct"
     model = AutoModelForCausalLM.from_pretrained(
         MODEL_ID, device_map="auto", torch_dtype="auto",
     )
@@ -41,3 +40,16 @@ def main(model, hf_username="ThatsGroes"):
         print(f"Enter exception due to\n: {e}")
         model.push_to_hub(SAVE_DIR)
         tokenizer.push_to_hub(SAVE_DIR)
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(
+        prog='ProgramName',
+        description='What the program does',
+        epilog='Text at the bottom of help')
+    
+    parser.add_argument('model_id')           # positional argument
+
+    args = parser.parse_args()
+
+    main(model=args.model_id)
