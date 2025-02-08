@@ -50,13 +50,20 @@ def main(model, hf_username="ThatsGroes"):
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(
-        prog='ProgramName',
-        description='What the program does',
-        epilog='Text at the bottom of help')
+    #parser = argparse.ArgumentParser(
+    #    prog='ProgramName',
+    #    description='What the program does',
+    #    epilog='Text at the bottom of help')
     
-    parser.add_argument('model_id', type=str)           # positional argument
+    #parser.add_argument('model_id', type=str)           # positional argument
 
-    args = parser.parse_args()
+    #args = parser.parse_args()
 
-    main(model=args.model_id)
+    #model_id = args.model_id
+
+    models = ["meta-llama/Llama-3.1-8B-Instruct",
+                "meta-llama/Llama-3.2-3B-Instruct"]
+    
+    for model_id in models:
+
+        main(model=model_id)
