@@ -97,7 +97,7 @@ for model in model_config:
 
         if isinstance(model, dict):
 
-            llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"], dtype=model["dtype"])
+            llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["quantization"], dtype=model["dtype"])
             project_name = model["model"] + "_" + model["quantization"]
             model = model["model"]
         else:
