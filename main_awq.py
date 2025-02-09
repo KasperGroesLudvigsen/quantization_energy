@@ -54,8 +54,8 @@ def make_prompt() -> dict:
 SAMPLES = 10000
 ##model_config = [{"model" : "meta-llama/Llama-3.1-8B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"},
 
-model_config = [{"model" : "ThatsGroes/Llama-3.1-8B-Instruct-AWQ" ,"quantization": "AWQ", "load_format": None}, # "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4"
-                {"model" : "ThatsGroes/Llama-3.2-3B-Instruct-AWQ" ,"quantization": "AWQ", "load_format": None}, # casperhansen/llama-3.2-3b-instruct-awq
+model_config = [{"model" : "ThatsGroes/Llama-3.1-8B-Instruct-AWQ" ,"quantization": "AWQ", "load_format": None, "dtype": "float16"}, # "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4"
+                {"model" : "ThatsGroes/Llama-3.2-3B-Instruct-AWQ" ,"quantization": "AWQ", "load_format": None, "dtype": "float16"}, # casperhansen/llama-3.2-3b-instruct-awq
                 {"model" : "meta-llama/Llama-3.1-8B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"},
                 {"model" : "meta-llama/Llama-3.2-3B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"},
                 "meta-llama/Llama-3.1-8B-Instruct",
@@ -97,7 +97,7 @@ for model in model_config:
 
         if isinstance(model, dict):
 
-            llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"])
+            llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"], dtype=model["dtype"])
             project_name = model["model"] + "_" + model["quantization"]
             model = model["model"]
         else:
@@ -161,7 +161,8 @@ for model in model_config:
         )
 
     except Exception as e:
-        print(f"Could not run inference with {project_name} due to exception:\n{e}")
+        
+        print(f"Could not run inference with due to exception:\n{e}")
 
 token_df = pd.DataFrame(token_df)
 token_df.to_csv("total_tokens.csv", index=False)
