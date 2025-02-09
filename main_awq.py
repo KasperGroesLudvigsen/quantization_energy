@@ -51,7 +51,7 @@ def make_prompt() -> dict:
 
 
 # samples per iteration
-SAMPLES = 100
+SAMPLES = 10000
 ##model_config = [{"model" : "meta-llama/Llama-3.1-8B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"},
 
 model_config = [{"model" : "ThatsGroes/Llama-3.1-8B-Instruct-AWQ" ,"quantization": "AWQ", "load_format": None, "dtype": "float16"}, # "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4"
