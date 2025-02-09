@@ -96,9 +96,14 @@ for model in model_config:
         sampling_params = SamplingParams(temperature=temperature, top_p=top_p, max_tokens=2048*2)
 
         if isinstance(model, dict):
+            if model["quantization"] == "bitsandbytes":
+                llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["load_format"], dtype=model["dtype"])
+                project_name = model["model"] + "_" + model["quantization"]
 
-            llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], load_format=model["quantization"], dtype=model["dtype"])
-            project_name = model["model"] + "_" + model["quantization"]
+            else:
+                llm = LLM(model=model["model"], max_seq_len_to_capture=8000, quantization=model["quantization"], dtype=model["dtype"])
+                project_name = model["model"]
+                
             model = model["model"]
         else:
             llm = LLM(model=model, max_seq_len_to_capture=8000)
