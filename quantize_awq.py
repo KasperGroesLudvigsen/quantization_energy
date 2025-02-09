@@ -39,19 +39,20 @@ def main(model, hf_username="ThatsGroes"):
 
     #print(f'Model is quantized and saved at "{quant_path}"')
     
-    try:
-        model.push_to_hub(SAVE_DIR, save_compressed=True)
-        tokenizer.push_to_hub(SAVE_DIR)
+    #try:
+    #    model.push_to_hub(SAVE_DIR, save_compressed=True)
+    #    tokenizer.push_to_hub(SAVE_DIR)
 
-    except Exception as e:
-        print(f"Enter exception due to\n: {e}")
-        model.push_to_hub(SAVE_DIR)
-        tokenizer.push_to_hub(SAVE_DIR)
+    #except Exception as e:
+    #    print(f"Enter exception due to\n: {e}")
+    #    model.push_to_hub(SAVE_DIR)
+    #    tokenizer.push_to_hub(SAVE_DIR)
         
     try:
-        print(f"Will save locally to {SAVE_DIR}")
+        print(f"Will try to save locally to {SAVE_DIR}")
         model.save_quantized(SAVE_DIR)
         tokenizer.save_pretrained(SAVE_DIR)
+        print("Saving successful")
 
     except Exception as e:
         print(f"Saving locally failed due to error:\n {e}")
