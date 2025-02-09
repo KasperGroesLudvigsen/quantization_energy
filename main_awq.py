@@ -79,7 +79,6 @@ prompts = [make_prompt() for i in range(SAMPLES)]
 
 dataset = Dataset.from_list(prompts)
 
-dataset.push_to_hub("ThatsGroes/quantization-energy-dataset")
 
 df = dataset.to_pandas()
 df.to_csv("dataset.csv", index=False)
@@ -166,6 +165,7 @@ for model in model_config:
         "was used for inference."
     )
 
+dataset.push_to_hub("ThatsGroes/quantization-energy-dataset")
 
 token_df = pd.DataFrame(token_df)
 token_df.to_csv("total_tokens.csv", index=False)
