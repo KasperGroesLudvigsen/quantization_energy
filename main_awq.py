@@ -56,8 +56,8 @@ SAMPLES = 10000
 
 model_config = [{"model" : "ThatsGroes/Llama-3.1-8B-Instruct-AWQ" ,"quantization": "AWQ", "load_format": None, "dtype": "float16"}, # "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4"
                 {"model" : "ThatsGroes/Llama-3.2-3B-Instruct-AWQ" ,"quantization": "AWQ", "load_format": None, "dtype": "float16"}, # casperhansen/llama-3.2-3b-instruct-awq
-                {"model" : "meta-llama/Llama-3.1-8B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"},
-                {"model" : "meta-llama/Llama-3.2-3B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes"},
+                {"model" : "meta-llama/Llama-3.1-8B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes", "dtype": "auto"},
+                {"model" : "meta-llama/Llama-3.2-3B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes", "dtype": "auto"},
                 "meta-llama/Llama-3.1-8B-Instruct",
                 "meta-llama/Llama-3.2-3B-Instruct",
                 "google/gemma-2-9b-it",
