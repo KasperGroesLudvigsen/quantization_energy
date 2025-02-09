@@ -59,9 +59,9 @@ model_config = [{"model" : "ThatsGroes/Llama-3.1-8B-Instruct-AWQ" ,"quantization
                 {"model" : "meta-llama/Llama-3.1-8B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes", "dtype": "auto"},
                 {"model" : "meta-llama/Llama-3.2-3B-Instruct" ,"quantization": "bitsandbytes", "load_format" :"bitsandbytes", "dtype": "auto"},
                 "meta-llama/Llama-3.1-8B-Instruct",
-                "meta-llama/Llama-3.2-3B-Instruct",
-                "google/gemma-2-9b-it",
-                "ThatsGroes/gemma-2-9b-it-FP8-Dynamic"
+                "meta-llama/Llama-3.2-3B-Instruct"
+                #"google/gemma-2-9b-it",
+                #"ThatsGroes/gemma-2-9b-it-FP8-Dynamic"
                 ]
 #model_config = ["google/gemma-2-9b-it", "ThatsGroes/gemma-2-9b-it-FP8-Dynamic"]
 
